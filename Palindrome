@@ -1,0 +1,24 @@
+import java.util.*;
+public class palindrome{
+    static void without_builtin(String str) {
+        char arr[]=new char[str.length()];
+        arr=str.toCharArray();
+        char[]n=new char[str.length()];
+        int count=0;
+        for(int i=str.length()-1;i>=0;i--){
+        n[count]=arr[i];
+        count++;
+        }
+        if(Arrays.equals(arr,n)){
+        System.out.println("Palindrome");
+    }else{
+        System.out.println("Not palindrome");
+    }
+}
+public static void main(String[]args){
+    Scanner sc=new Scanner(System.in);
+    System.out.print("enter word:");
+    String str=sc.nextLine();
+    without_builtin(str);
+}
+}
