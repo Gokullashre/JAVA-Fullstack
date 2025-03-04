@@ -1,0 +1,8 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String str="hello world";
+        String a=str.substring(2,7);
+        System.out.println(a);
+    }
+}
