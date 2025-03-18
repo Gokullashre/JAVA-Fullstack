@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.Scanner;
+class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the string: ");
+        String s = in.nextLine();
+        String[] w = s.toLowerCase().split(" ");
+        boolean[]v = new boolean[w.length];
+        int count;
+        for(int i=0;i<w.length;i++){
+            if(!v[i]){
+                count=1;
+                for(int j=i+1;j<w.length;j++){
+                    if(w[i].equals(w[j])){
+                        count++;
+                        v[j]=true;
+                    }
+                }
+                System.out.println(w[i]+" "+ count);
+            }
+}
+}
+}
