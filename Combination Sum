@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+public class CombinationSum {
+    public static int[][] combinationSum(int[] candidates,int target) {
+        Arrays.sort(candidates);
+        int[][] result=new int[100][10];
+        int[] temp=new int[10];
+        int[] count={0};
+        findCombinations(result,temp,candidates,target,0,0,count);
+        return Arrays.copyOf(result,count[0]);
+    }
+    private static void findCombinations(int[][] result,int[] temp,int[] candidates,int target,int index,int tempIndex,int[] count) {
+        if (target==0) {
+            result[count[0]]=Arrays.copyOf(temp,tempIndex);
+            count[0]++;
+            return;
+        }
+        for (int i=index;i<candidates.length;i++) {
+            if (i>index&&candidates[i]==candidates[i-1])continue; 
+            if (target>=candidates[i]) {
+                temp[tempIndex]=candidates[i];
+                findCombinations(result,temp,candidates,target - candidates[i],i+1,tempIndex + 1,count);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        int[] candidates={2,5,2,1,2};
+        int target=5;
+        int[][] result=combinationSum(candidates,target);
+        for (int[] arr:result) {
+            if (arr.length>0) {
+                System.out.println(Arrays.toString(arr));
+            }
+        }
+    }
+}
